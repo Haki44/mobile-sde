@@ -27,10 +27,10 @@
                             Adventure name
                         </th>
                         <th scope="col" class="py-3 px-6 text-center">
-                            Edit date
+                            Edit
                         </th>
                         <th scope="col" class="py-3 px-6 text-center">
-                            Delete Date
+                            Delete
                         </th>
                     </tr>
                 </thead>
@@ -40,10 +40,10 @@
                             {{ adventure.name }}
                         </th>
                         <td class="py-4 px-6 text-center">
-                            <a href="#" class="text-center bg-blue-600 text-white p-2 rounded mr-3 pl-5 pr-5">Edit</a>
+                            <router-link :to="{ name: 'EditAdventure', params:{ id: adventure.id }}" class="text-center bg-blue-600 text-white p-2 rounded mr-3 pl-5 pr-5">Edit</router-link>
                         </td>
                         <td class="py-4 px-6 text-center">
-                            <a href="#" class="text-center bg-red-600 text-white p-2 rounded mr-3 pl-5 pr-5">Delete</a>
+                            <a href="#" class="text-center bg-red-600 text-white p-2 rounded mr-3 pl-5 pr-5" @click="deleteAdventure(adventure)">Delete</a>
                         </td>
                     </tr>
                 </tbody>
@@ -68,7 +68,7 @@ export default {
     ...mapState('adventures', ['adventures']),
   },
   methods: {
-    ...mapActions('adventures', ['getAdventures']),
+    ...mapActions('adventures', ['getAdventures', 'deleteAdventure']),
   },
 }
 </script>

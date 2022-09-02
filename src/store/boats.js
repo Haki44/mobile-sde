@@ -12,6 +12,7 @@ const boats = {
     boatDetail: [],
     datesReservationBoat: [],
     eventsBoat: [],
+    eventDetail: [],
   },
   mutations:{
     UPDATE_BOATS(state, payload){
@@ -19,14 +20,18 @@ const boats = {
     },
     UPDATE_PERIODS(state, payload){
       state.periods = payload
-      console.log(state.periods)
+      // console.log(state.periods)
     },
     UPDATE_BOAT_DETAIL(state, payload){
       state.boatDetail = payload
       // console.log(state.boatDetail)
     },
+    UPDATE_EVENT_DETAIL(state, payload){
+      state.eventDetail = payload
+      // console.log(state.eventDetail)
+    },
     UPDATE_EVENTS_BOAT(state, payload){
-      state.eventsBoat.push(payload)
+      state.eventsBoat = payload
       // console.log(state.eventsBoat)
     },
     UPDATE_DATES_RESERVATION_BOAT(state, payload){
@@ -68,19 +73,74 @@ const boats = {
     },
 
     async getEventsBoat(context) {
-
+      console.log(context)
       const boatId = router.currentRoute.value.params.id
       axiosClient.get('event')
       .then( res => {
         const events = res.data
+        // console.log(events)
+        const arrayEvents = []
         events.forEach(element => {
           if (element.boat_id == boatId) {
-            context.commit('UPDATE_EVENTS_BOAT', element);
+            arrayEvents.push(element)
           }
         });
+        context.commit('UPDATE_EVENTS_BOAT', arrayEvents);
       })
       .catch( err => console.log(err));
+    },
 
+    async storeEvent(context,payload){
+      const boatId = router.currentRoute.value.params.id
+      console.log(context)
+      console.log(payload)
+      const date = dayjs(new Date())
+      if (payload.start == '' || payload.end == '' || payload.title == '') {
+        alert('Vous devez remplir les champs vides')
+      } else if(date.format('YYYY-MM-DD') > payload.start || payload.start > payload.end) {
+        alert('Les dates sélectionnées ne sont pas corrects')
+      } else {
+        let eventItem = {title: payload.title, start: payload.start, end: payload.end, boat_id: boatId}
+        axiosClient.post('event', eventItem)
+        .then( res => {
+          if (res.status == '200') {
+            location.reload()
+          }
+        })
+        .catch( err => console.log(err));
+      }
+    },
+
+    async getEventDetail(context){
+      const eventId = router.currentRoute.value.params.id
+      axiosClient.get(`event/${eventId}`)
+      .then( res => {
+        context.commit('UPDATE_EVENT_DETAIL', res.data);
+      })
+      .catch( err => console.log(err));
+    },
+
+    async updateEvent(context, payload){
+      console.log(context)
+      console.log(payload)
+      const eventId = router.currentRoute.value.params.id
+      const date = dayjs(new Date())
+
+      if (payload.start == '' || payload.end == '' || payload.title == '') {
+        alert('Vous devez remplir les champs vides')
+      } else if(date.format('YYYY-MM-DD') > payload.start || payload.start > payload.end) {
+        alert('Les dates sélectionnées ne sont pas corrects')
+      } else {
+        let eventItem = {title: payload.title, start: payload.start, end: payload.end, boat_id: payload.boat_id}
+        console.log(eventItem)
+        axiosClient.put(`event/${eventId}`, eventItem)
+        .then( res => {
+          if (res.status == '200') {
+            router.push(`/admin/boat/${payload.boat_id}/event`)
+          }
+        })
+        .catch( err => console.log(err));
+      }
     },
 
     async getPeriods(context){
@@ -143,6 +203,16 @@ const boats = {
         location.reload()
       })
       .catch( err => console.log(err));
+    },
+
+    async deleteEvent(context, payload){
+      console.log(context)
+      console.log(payload.id)
+      const eventId = payload.id
+
+      axiosClient.delete(`event/${eventId}`)
+      alert('La date pour ' + payload.title + ' à bien été suprimée' )
+      location.reload()
     },
 
     // async updateBoat(context, payload){

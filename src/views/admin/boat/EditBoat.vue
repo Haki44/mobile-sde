@@ -172,6 +172,10 @@ export default {
   methods: {
     ...mapActions('boats', ['getBoatDetail', 'updateBoat']),
 
+    // async uploadImage(e) {
+    //   this.boat.file = e.target.files[0];
+    // },
+
     async updateBoat(e){
       e.preventDefault();
       const boatId = this.boatDetail.id

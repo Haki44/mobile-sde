@@ -27,10 +27,13 @@
                             Boat name
                         </th>
                         <th scope="col" class="py-3 px-6 text-center">
-                            Edit date
+                            Edit
                         </th>
                         <th scope="col" class="py-3 px-6 text-center">
-                            Delete Date
+                            Edit events
+                        </th>
+                        <th scope="col" class="py-3 px-6 text-center">
+                            Delete
                         </th>
                     </tr>
                 </thead>
@@ -41,6 +44,9 @@
                         </th>
                         <td class="py-4 px-6 text-center">
                             <router-link :to="{ name: 'EditBoat', params:{ id: boat.id }}" class="text-center bg-blue-600 text-white p-2 rounded mr-3 pl-5 pr-5">Edit</router-link>
+                        </td>
+                         <td class="py-4 px-6 text-center">
+                            <router-link :to="{ name: 'EventBoat', params:{ id: boat.id }}" class="text-center bg-yellow-400 text-white p-2 rounded m-3 pl-5 pr-5">Events</router-link>
                         </td>
                         <td class="py-4 px-6 text-center">
                             <a href="#" class="text-center bg-red-600 text-white p-2 rounded mr-3 pl-5 pr-5" @click="deleteBoat(boat)">Delete</a>

@@ -6,12 +6,16 @@ const adventures = {
 
   state: {
     adventures: [],
+    levels: [],
     adventureDetail: [],
     levelName: '',
   },
   mutations:{
     UPDATE_ADVENTURES(state, payload){
       state.adventures = payload
+    },
+    UPDATE_LEVELS(state, payload){
+      state.levels = payload
     },
     UPDATE_ADVENTURE_DETAIL(state, payload){
       state.adventureDetail = payload
@@ -30,6 +34,17 @@ const adventures = {
       .then( res => {
         console.log(res)
         context.commit('UPDATE_ADVENTURES', res.data);
+      })
+      .catch( err => console.log(err));
+
+    },
+
+    async getLevels(context){
+
+      axiosClient.get('level')
+      .then( res => {
+        console.log(res)
+        context.commit('UPDATE_LEVELS', res.data);
       })
       .catch( err => console.log(err));
 
@@ -69,6 +84,21 @@ const adventures = {
         .catch(err => alert(err.response.data.message));
      
       }
+    },
+
+    async deleteAdventure(context, payload){
+      console.log(context)
+      const adventureId = payload.id
+
+      axiosClient.delete(`adventure/${adventureId}`)
+      alert('La croisière ' + payload.name + ' à bien été suprimée' )
+      
+      axiosClient.get('adventure')
+      .then( res => {
+        context.commit('UPDATE_ADVENTURES', res.data);
+        location.reload()
+      })
+      .catch( err => console.log(err));
     },
 
   },
