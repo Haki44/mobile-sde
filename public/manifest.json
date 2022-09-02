@@ -1,0 +1,13 @@
+{
+  "name": "Sailing Dream Experience Mobile",
+  "short_name": "Sailing Dream Experience",
+  "icons": [
+      {
+          "src": "/144.png",
+          "sizes": "144x144",
+          "type": "image/png"
+      }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}
