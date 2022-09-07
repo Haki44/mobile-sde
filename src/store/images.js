@@ -3,6 +3,7 @@ const images = {
 
   state: {
     urlImage: 'http://haki44.eu/storage',
+    // urlImage: 'http://sde-api/storage',
   },
   mutations:{
   },

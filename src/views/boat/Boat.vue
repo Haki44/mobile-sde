@@ -10,6 +10,32 @@
         </div>
       </header>
 
+      <h2 class="mb-3 ml-5 pl-3 text-xl">Our Skippers</h2>
+
+      <!-- Carousel -->
+      <div class="flex overflow-x-auto mb-5">
+        <div v-for="skipper in skippers" :key="skipper">
+          <a href="#" class="w-screen p-2 relative overflow-hidden mb-5 flex items-center bg-white rounded-lg border shadow-md flex-row md:max-w-xl dark:border-gray-700 dark:bg-gray-800">
+            <div class="h-full overflow-hidden basis-1/4">
+              <img class="scale-125 object-cover w-full h-56 rounded-t-lg md:rounded-none md:rounded-l-lg" :src="`${skipper.picture}`" :alt="`${skipper.picture}`">
+            </div>
+            <div class="flex flex-col pl-1 justify-between leading-normal basis-3/4">
+                <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ skipper.name }} {{ skipper.firstname }}</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{skipper.description_en}}</p>
+                <hr>
+                <p class="ml-2 mt-2">{{skipper.languages}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <small class="flex items-center justify-end mr-3 mb-3">
+        Scroll to see more skippers
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+        </svg>
+      </small>
+
       <div class="w-full flex flex-col items-center justify-center">
         <div v-for="boat in boats.data" :key="boat.id" class="mb-5">
           <div class="w-full flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-3xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -48,13 +74,16 @@ export default {
   mounted(){
     window.scrollTo(0, 0)
     this.getBoats();
+    this.getSkippers();
   },
   computed: {
     ...mapState('boats', ['boats']),
     ...mapState('images', ['urlImage']),
+    ...mapState('skippers', ['skippers']),
   },
   methods: {
     ...mapActions('boats', ['getBoats']),
+    ...mapActions('skippers', ['getSkippers']),
   },
 
 }
