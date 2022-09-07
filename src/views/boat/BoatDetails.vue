@@ -75,6 +75,8 @@
         </div>
       </div>
 
+      <h2 class="mb-3 ml-5 pl-3 text-xl">Price per person from</h2>
+
       <div class="overflow-x-auto relative shadow-md sm:rounded-lg mb-5">
           <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100">
               <thead class="text-xs text-white uppercase bg-blue-600 dark:text-white">
@@ -114,6 +116,8 @@
               </tbody>
           </table>
       </div>
+
+      <h2 class="mb-3 ml-5 pl-3 text-xl">Choose your reservation dates :</h2>
 
       <div class="flex flex-col justify-center mb-5">
         <v-date-picker
