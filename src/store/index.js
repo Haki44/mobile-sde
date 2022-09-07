@@ -3,6 +3,8 @@ import boats from "./boats";
 import adventures from "./adventures";
 import auth from "./auth";
 import contact from "./contact";
+import messages from "./messages";
+import images from "./images";
 
 const store = createStore({
     modules: {
@@ -10,6 +12,8 @@ const store = createStore({
         adventures,
         auth,
         contact,
+        messages,
+        images,
     }
 })
 export default store

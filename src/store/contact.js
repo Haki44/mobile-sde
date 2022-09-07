@@ -11,7 +11,7 @@ const contact = {
   getters: {
   },
   actions:{
-    // login
+    // envoie du formulaire de contact
     async sendContact(context, payload) {
       
       if (payload.name == '' || payload.firstname == '' || payload.email == '' || payload.tel == '' || payload.description == '') {
@@ -25,9 +25,7 @@ const contact = {
           alert('Votre message à bien été envoyé')
         })
         .catch(err => alert(err.response.data.message));
-     
       }
-
     },
 
   },

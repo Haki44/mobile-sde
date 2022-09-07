@@ -19,8 +19,9 @@ const adventures = {
     },
     UPDATE_ADVENTURE_DETAIL(state, payload){
       state.adventureDetail = payload
+      console.log(state.adventureDetail)
       state.levelName = state.adventureDetail.level.name
-      console.log(state.levelName)
+      // console.log(state.levelName)
     },
   },
   getters: {
@@ -61,6 +62,7 @@ const adventures = {
 
     },
 
+    // function de changement de page (le router link ne marchait pas)
     async goToAdventureBooking(){
       const adventureId = router.currentRoute.value.params.id
 
@@ -79,7 +81,8 @@ const adventures = {
         await axiosClient.post('registerAdventureBooking', bookingItem)
         .then(res => {
           console.log(res)
-          router.push(`/adventure`)
+          router.push(`/`)
+          alert('Your booking request for cruise as been sent, we\'re coming back to you !')
         })
         .catch(err => alert(err.response.data.message));
      
@@ -96,7 +99,7 @@ const adventures = {
       axiosClient.get('adventure')
       .then( res => {
         context.commit('UPDATE_ADVENTURES', res.data);
-        location.reload()
+        router.push(`/admin/adventure`)
       })
       .catch( err => console.log(err));
     },

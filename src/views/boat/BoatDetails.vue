@@ -10,46 +10,21 @@
       </div>
     </header>
 
-    <div id="controls-carousel" class="relative mb-5" data-carousel="static">
-      <!-- Carousel wrapper -->
-      <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-          <!-- Item 1 -->
-          <!-- <div class="hidden duration-700 ease-in-out bg-blue-900" data-carousel-item>
-              <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div> -->
-          <!-- Item 2 -->
-          <!-- <div v-for="picture in boatDetail.pictures" :key="picture.id" class="w-full h-full"> -->
-            <div v-for="picture in boatDetail.pictures" :key="picture.id"  class="duration-700 ease-in-out bg-blue-900 h-full" data-carousel-item>
-              <img :src="`http://sde-api/storage/boat/${boatDetail.id}/${picture.id}-${picture.picture}`" class="absolute block w-full " :alt="`${picture.picture}`">
-            </div>
-          <!-- </div> -->
-          <!-- Item 3 -->
-          <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div> -->
-          <!-- Item 4 -->
-          <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div> -->
-          <!-- Item 5 -->
-          <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div> -->
+    <!-- Carousel -->
+    <div class="flex overflow-x-auto mb-5">
+      <div v-for="picture in boatDetail.pictures" :key="picture.id">
+        <div class="w-screen flex justify-center">
+          <img class="h-56" :src="`${urlImage}/boat/${boatDetail.id}/${picture.id}-${picture.picture}`" :alt="`${picture.picture}`">
+        </div>
       </div>
-      <!-- Slider controls -->
-      <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-          <span class="bg-blue-900 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg aria-hidden="true" class="w-6 h-6 text-white dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-              <span class="sr-only">Previous</span>
-          </span>
-      </button>
-      <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-          <span class="bg-blue-900 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg aria-hidden="true" class="w-6 h-6 text-white dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-              <span class="sr-only">Next</span>
-          </span>
-      </button>
-    </div> 
+    </div>
+
+    <small class="flex items-center justify-end mr-3 mb-3">
+      Scroll to see more images
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+      </svg>
+    </small>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-center items-center flex-col">
 
@@ -62,11 +37,11 @@
           <dl>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Description</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.description_fr }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.description_en }}</dd>
             </div>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.type_fr }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.type_en }}</dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Displacements</dt>
@@ -74,23 +49,23 @@
             </div>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Surface</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.surface }} m²</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.surface }} sqm</dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Engine power</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.engine_power }} ch</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.engine_power }} hp</dd>
             </div>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Hull</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.hull_fr }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.hull_en }}</dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Deck</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.deck_fr }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.deck_en }}</dd>
             </div>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Mast</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.mast_fr }}</dd>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ boatDetail.mast_en }}</dd>
             </div>
             <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Architect</dt>
@@ -195,6 +170,7 @@ export default {
   },
   computed: {
     ...mapState('boats', ['boatDetail', 'periods', 'eventsBoat']),
+    ...mapState('images', ['urlImage']),
   },
   methods: {
     ...mapActions('boats', ['getBoatDetail', 'datesReservationBoat', 'getEventsBoat']),
@@ -210,5 +186,4 @@ export default {
 </script>
 
 <style>
-
 </style>

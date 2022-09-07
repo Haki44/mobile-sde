@@ -3,6 +3,7 @@ import axios from "axios";
 import auth from "../store/auth";
 
 const axiosClient = axios.create({
+  // baseURL: 'https://haki44.eu/api'
   baseURL: 'http://sde-api/api'
 })
 

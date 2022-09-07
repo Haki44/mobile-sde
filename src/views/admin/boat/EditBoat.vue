@@ -175,7 +175,7 @@ export default {
     // async uploadImage(e) {
     //   this.boat.file = e.target.files[0];
     // },
-
+    // Edit Boat in BDD
     async updateBoat(e){
       e.preventDefault();
       const boatId = this.boatDetail.id
@@ -192,17 +192,7 @@ export default {
         router.push(`/boat`)
       })
       .catch(err => alert(err.response.data.message));
-    // console.log(this.boatDetail.name)
     },
-
-    // async uploadImage(e) {
-      //  const files = e.target.files[0]
-      //  console.log(files)
-      //  this.picture = files
-      //  console.log(this.boat.picture)
-      // this.boat.file = e.target.files[0];
-      // console.log(this.boat.file)
-    // },
 
   },
 }

@@ -45,13 +45,11 @@ const boats = {
   actions:{
     
     async getBoats(context){
-
       axiosClient.get('boat')
       .then( res => {
         context.commit('UPDATE_BOATS', res.data);
       })
       .catch( err => console.log(err));
-
     },
 
     async getBoatDetail(context) {
@@ -90,6 +88,7 @@ const boats = {
       .catch( err => console.log(err));
     },
 
+    // creation d'evenement qui vont ensuite etre dans le calendrier
     async storeEvent(context,payload){
       const boatId = router.currentRoute.value.params.id
       console.log(context)
@@ -104,7 +103,21 @@ const boats = {
         axiosClient.post('event', eventItem)
         .then( res => {
           if (res.status == '200') {
-            location.reload()
+            axiosClient.get('event')
+            .then( res => {
+              const events = res.data
+              // console.log(events)
+              const arrayEvents = []
+              events.forEach(element => {
+                if (element.boat_id == boatId) {
+                  arrayEvents.push(element)
+                }
+              });
+              context.commit('UPDATE_EVENTS_BOAT', arrayEvents);
+              router.push(`/admin/boat/${boatId}/event`)
+              alert('L\'event ' + payload.title + ' à été ajouté')
+            })
+            .catch( err => console.log(err));
           }
         })
         .catch( err => console.log(err));
@@ -137,6 +150,7 @@ const boats = {
         .then( res => {
           if (res.status == '200') {
             router.push(`/admin/boat/${payload.boat_id}/event`)
+            alert('L\'event' + payload.title + 'à été modifié')
           }
         })
         .catch( err => console.log(err));
@@ -153,6 +167,7 @@ const boats = {
 
     },
 
+    // récupere les dates entrée dans le details du bateau pour les passer dans la demande de reservation
     async datesReservationBoat(context, payload) {
 
       const boatId = router.currentRoute.value.params.id
@@ -166,6 +181,7 @@ const boats = {
   
     },
 
+    // envoie de la demande de location de bateau
     async sendBoatBooking(context, payload){
 
       const userId = context.rootState.auth.authUser.id
@@ -183,7 +199,8 @@ const boats = {
         await axiosClient.post('registerBoatBooking', bookingItem)
         .then(res => {
           console.log(res)
-          router.push(`/boat`)
+          router.push(`/`)
+          alert('Your booking request for rental boat as been sent, we\'re coming back to you !')
         })
         .catch(err => alert(err.response.data.message));
      
@@ -200,26 +217,35 @@ const boats = {
       axiosClient.get('boat')
       .then( res => {
         context.commit('UPDATE_BOATS', res.data);
-        location.reload()
+        router.push(`/admin/boat`)
       })
       .catch( err => console.log(err));
     },
 
     async deleteEvent(context, payload){
-      console.log(context)
-      console.log(payload.id)
-      const eventId = payload.id
-
-      axiosClient.delete(`event/${eventId}`)
-      alert('La date pour ' + payload.title + ' à bien été suprimée' )
-      location.reload()
-    },
-
-    // async updateBoat(context, payload){
-      // payload.preventDefault()
       // console.log(context)
       // console.log(payload)
-    // },
+      const eventId = payload.id
+      const boatId = payload.boat_id
+
+      axiosClient.delete(`event/${eventId}`)
+  
+      axiosClient.get('event')
+      .then( res => {
+        const events = res.data
+        // console.log(events)
+        const arrayEvents = []
+        events.forEach(element => {
+          if (element.boat_id == boatId) {
+            arrayEvents.push(element)
+          }
+        });
+        context.commit('UPDATE_EVENTS_BOAT', arrayEvents);
+        alert('La date pour ' + payload.title + ' à bien été suprimée' )
+        router.push(`/admin/boat/${boatId}/event`)
+      })
+      .catch( err => console.log(err));
+    },
 
   },
 }

@@ -13,12 +13,11 @@
                 <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+                <router-link to="/contact" class="hover:underline">Contact</router-link>
             </li>
-            <li>
-                <a href="#" class="hover:underline">Contact</a>
-            </li>
+       
         </ul>
+        <p class="text-white mr-4 md:mr-6 ">05 01 02 03 04</p>
     </div>
     <hr class="my-6 border-white sm:mx-auto lg:my-8" />
     <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2022 Mobile-SDE. All Rights Reserved.

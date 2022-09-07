@@ -26,6 +26,7 @@ const auth = {
 
     UPDATE_AUTH_USER(state, payload){
       state.authUser = payload
+      console.log(state.authUser)
     },
   },
   getters: {
@@ -43,15 +44,18 @@ const auth = {
             context.state.user.token = res.data.token;
             // persiste la connexion
             localStorage.setItem('auth_token', context.state.user.token)
+            axiosClient.get('getAuthUser')
+            .then( res => {
+              context.commit('UPDATE_AUTH_USER', res.data[0]);
+              router.back()
+            })
+            .catch( err => console.log(err));
           })
           .catch(err => {
             alert('Il y a eu un probleme lors de la connexion')
             console.log(err)
           });
           
-      router.back()
-      // location.replace(`/`)
-      // router.push(`/`);
     },
 
     // register
@@ -75,10 +79,12 @@ const auth = {
     // logout
     async logout() {
       localStorage.setItem('auth_token', '')
-      console.log(localStorage.getItem('auth_token'))
-      location.replace(`/`)
+      location.reload()
+      // const authUser = {}
+   
+      // context.commit('UPDATE_AUTH_USER', authUser);
       // router.push(`/`)
-      // location.reload()
+
     },
     
     // is amdin

@@ -15,34 +15,22 @@
 
             <div class="mx-auto px-6 lg:px-8 pb-12 mt-5">
                 <div class="text-blue-900 flex justify-center align-center">
-                    <p class="border-white border-2 text-white text-3xl text-center basis-1/2 p-5 desc-home">Louez un yacht ou reservez une croisière et vivez une experience unique à bord d'un voilier d'exception</p>
+                    <p class="border-white border-2 text-white text-3xl text-center basis-1/2 p-5 desc-home">Rent a yacht or book a cruise and live a unique experience aboard an exceptional sailboat</p>
                 </div>
             </div>
 
             <div class="mx-auto sm:px-6 lg:px-8 md:py-12 flex md:flex-row flex-col justify-center">
                 <div class="basis-1/2 p-5 flex justify-center border-white md:border-r">
                     <router-link to="/boat" class="w-80 button-home text-center text-xl border-2 border-white bg-button-home text-blue-900 hover:bg-blue-900 hover:text-white transition duration-500">
-                        <b>Louez votre Yacht</b>
+                        <b>Rent your Yacht</b>
                     </router-link>
                 </div>
 
                 <div class="basis-1/2 p-5 flex justify-center border-white md:border-l">
                     <router-link to="/adventure" class="w-80 button-home text-center text-xl border-2 border-white bg-button-home text-blue-900 hover:bg-blue-900 hover:text-white transition duration-500">
-                        <b>Reservez votre croisière</b>
+                        <b>Book your cruise</b>
                     </router-link>
                 </div>
-               
-                <!-- <div class="basis-1/2 p-5 flex justify-center border-white md:border-r">
-                    <a href="#" class="button-home text-center text-xl border-2 border-white bg-button-home text-blue-900 hover:bg-blue-900 hover:text-white transition duration-500">
-                        <b>Reservez votre unité</b>
-                    </a>
-                </div>
-
-                <div class="basis-1/2 p-5 flex justify-center border-white md:border-l">
-                    <a href="#" class="button-home text-center text-xl border-2 border-white bg-button-home text-blue-900 hover:bg-blue-900 hover:text-white transition duration-500">
-                        <b>Reservez votre regate</b>
-                    </a>
-                </div> -->
             </div>
 
         </div>

@@ -9,7 +9,7 @@
                 <div class="flex items-center" v-if="user.token == undefined || user.token.length == 0">
                     <router-link class="text-white dark:text-white font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5" to="/login">Login</router-link>
                     <div class="text-white">|</div>
-                    <router-link class="text-white font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2" to="/register">Register</router-link>
+                    <router-link class="text-white font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 md:mr-2" to="/register">Register</router-link>
                 </div>
                 <div v-else>
                     <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="text-white font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">{{ authUser.name }} {{ authUser.firstname }}<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
@@ -31,13 +31,13 @@
             <div id="mega-menu" class="hidden justify-between items-center w-full text-sm md:flex md:w-auto md:order-1">
                 <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
                     <li>
-                        <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/">Accueil</router-link>
+                        <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/">Home</router-link>
                     </li>
                     <li>
-                        <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/boat">Location de bateaux</router-link>
+                        <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/boat">Rental boat</router-link>
                     </li>
                     <li>
-                      <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/adventure">Croisière</router-link>
+                      <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/adventure">Cruise</router-link>
                     </li>
                     <li>
                         <router-link class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" to="/contact" >Contact</router-link>

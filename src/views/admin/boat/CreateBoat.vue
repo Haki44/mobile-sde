@@ -171,13 +171,9 @@ export default {
     ...mapActions('boats', ['storeBoat']),
 
     async uploadImage(e) {
-      //  const files = e.target.files[0]
-      //  console.log(files)
-      //  this.picture = files
-      //  console.log(this.boat.picture)
       this.boat.file = e.target.files[0];
-      // console.log(this.boat.file)
     },
+    // Create Boat in BDD
     async storeBoat(e){
       e.preventDefault();
       const config = {
